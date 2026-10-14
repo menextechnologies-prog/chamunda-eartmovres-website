@@ -202,6 +202,9 @@ export const translations = {
       follow: 'Follow Us',
       rights: 'All rights reserved.',
       est: 'Since 2011 · Veraval, Gujarat',
+      serviceAreasTitle: 'Service Areas',
+      serviceAreasText: 'We provide reliable JCB rent in Veraval, JCB rent in Junagadh, JCB rent in Keshod, and JCB rent in Supasi for all your excavation, road construction, and earthmoving needs. Our fleet of JCB machines, Hitachi excavators, loaders, and hydraulic breakers is available on rent with trained operators — serving Gir Somnath district and all of Gujarat since 2011.',
+      serviceAreasCities: ['Veraval', 'Junagadh', 'Keshod', 'Supasi', 'Somnath', 'Una', 'Kodinar', 'Mangrol', 'Talala', 'Gir Somnath'],
     },
     float: { wa: 'Chat on WhatsApp', call: 'Call Now' },
     wa: {
@@ -408,6 +411,9 @@ export const translations = {
       follow: 'અમને ફોલો કરો',
       rights: 'સર્વ હક અમારી પાસે.',
       est: '૨૦૧૧થી · વેરાવળ, ગુજરાત',
+      serviceAreasTitle: 'સેવા વિસ્તાર',
+      serviceAreasText: 'અમે વેરાવળ, જૂનાગઢ, કેશોદ અને સુપાસીમાં JCB ભાડે આપીએ છીએ. ખોદકામ, રોડ બાંધકામ અને અર્થમૂવિંગ માટે JCB, હિટાચી એક્સકેવેટર, લોડર અને હાઇડ્રોલિક બ્રેકર તાલીમ પામેલા ઓપરેટર સાથે ભાડે મળે છે — ૨૦૧૧થી ગીર સોમનાથ જિલ્લા અને આખા ગુજરાતમાં સેવા.',
+      serviceAreasCities: ['વેરાવળ', 'જૂનાગઢ', 'કેશોદ', 'સુપાસી', 'સોમનાથ', 'ઉના', 'કોડીનાર', 'માંગરોળ', 'તાલાળા', 'ગીર સોમનાથ'],
     },
     float: { wa: 'વોટ્સએપ પર વાત કરો', call: 'કૉલ કરો' },
     wa: {

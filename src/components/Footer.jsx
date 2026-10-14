@@ -134,8 +134,28 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Service Areas — SEO content block */}
+        <article className="mt-12 rounded-2xl border border-line/40 bg-white/[0.03] px-6 py-7 backdrop-blur-sm">
+          <h3 className="text-xs font-bold tracking-[0.25em] text-mute uppercase">
+            {t.footer.serviceAreasTitle}
+          </h3>
+          <p className="mt-3 text-sm leading-relaxed text-ivory/60">
+            {t.footer.serviceAreasText}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {t.footer.serviceAreasCities.map((city) => (
+              <span
+                key={city}
+                className="inline-block rounded-full border border-safety/20 bg-safety/5 px-3.5 py-1.5 text-xs font-medium text-safety/80 transition hover:border-safety/40 hover:text-safety"
+              >
+                {city}
+              </span>
+            ))}
+          </div>
+        </article>
+
         {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-xs text-mute sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-xs text-mute sm:flex-row">
           <p>
             © {year} Chamunda Earthmovers · {t.footer.rights}
           </p>
