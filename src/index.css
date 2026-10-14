@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+/* ── Vempera Semi Bold (demo font) — per-glyph fallback in font stacks ────── */
+@font-face {
+  font-family: "Vempera";
+  src:
+    url("/fonts/vempera-semibold.otf") format("opentype"),
+    url("/fonts/vempera-semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Atavian (SynType) — free commercial license — hero badge titles ──────── */
+@font-face {
+  font-family: "Atavian";
+  src: url("/fonts/atavian-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Bakly Cake (demo, personal use) — hero sub-paragraph ─────────────────── */
+@font-face {
+  font-family: "Bakly Cake";
+  src: url("/fonts/bakly-cake.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Bhaskar Gujarati (client font) — all Gujarati text ───────────────────── */
+@font-face {
+  font-family: "Bhaskar Guj";
+  src: url("/fonts/bhaskar-guj.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-ink: #0b0b0c;
+  --color-ink2: #131316;
+  --color-line: rgba(255, 255, 255, 0.09);
+  --color-safety: #ffc107;
+  --color-amberdeep: #ff9d00;
+  --color-ivory: #f4f1e8;
+  --color-mute: #a6a1a0;
+  --font-display: "Luckiest Guy", "Oswald", "Arial Narrow", sans-serif;
+  --font-body: "Bakly Cake", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-badge: "Atavian", "Vempera", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-herosub: "Bakly Cake", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-guj: "Bhaskar Guj", "Noto Sans Gujarati", "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-ivory);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  /* all-caps display fonts read cramped without a little tracking */
+  letter-spacing: 0.015em;
+  line-height: 1.6;
+  /* Bakly Cake ships only a 400 face — never fake-bold it where
+     font-semibold/font-bold is requested (labels, buttons) */
+  font-synthesis-weight: none;
+}
+
+/* Luckiest Guy is a chunky comic face — it needs air between lines and letters */
+.font-display {
+  line-height: 1.26;
+  letter-spacing: 0.045em;
+}
+
+/* Long-form text inherits the body face (Bakly Cake); these properties keep
+   paragraphs airy. .font-badge / .font-herosub carry their own faces. */
+p {
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+}
+
+html.lang-gu .font-badge,
+html.lang-gu .font-herosub {
+  font-family: var(--font-guj);
+}
+
+html.lang-gu body {
+  letter-spacing: 0;
+}
+
+/* Gujarati mode: switch typefaces (Oswald/Inter have no Gujarati glyphs) */
+html.lang-gu body,
+html.lang-gu .font-display {
+  font-family: var(--font-guj);
+}
+html.lang-gu .font-display {
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+::selection {
+  background: var(--color-safety);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0b0b0c; }
+::-webkit-scrollbar-thumb { background: #26262b; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a41; }
+
+/* ── Glass cards ─────────────────────────────────────────────── */
+.glass {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(14px);
+}
+
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s, box-shadow 0.35s;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 193, 7, 0.45);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 193, 7, 0.14);
+}
+
+/* ── Scroll reveal ───────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Gallery zoom ────────────────────────────────────────────── */
+.img-zoom img {
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-zoom:hover img {
+  transform: scale(1.07);
+}
+
+/* ── Floating WhatsApp pulse ─────────────────────────────────── */
+@keyframes wa-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+  70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+.wa-pulse { animation: wa-pulse 2.2s infinite; }
+
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
+}
+.scroll-hint { animation: bounce-soft 1.9s ease-in-out infinite; }
+
+@keyframes ping-dot {
+  0% { transform: scale(1); opacity: 0.9; }
+  80%, 100% { transform: scale(2.6); opacity: 0; }
+}
+.ping-dot { animation: ping-dot 1.6s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+/* ── Form fields ─────────────────────────────────────────────── */
+.field {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: var(--color-ivory);
+  outline: none;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
+  letter-spacing: normal;
+  transition: border-color 0.2s, background 0.2s;
+}
+.field:focus {
+  border-color: rgba(255, 193, 7, 0.6);
+  background: rgba(255, 193, 7, 0.05);
+}
+.field::placeholder { color: rgba(244, 241, 232, 0.35); }
+select.field { appearance: none; }
+select.field option { background: #131316; color: #f4f1e8; }
+
+/* ── Hero video: slow cinematic zoom, smooth fade-in ─────────── */
+@keyframes hero-zoom {
+  from { transform: scale(1.03); }
+  to { transform: scale(1.13); }
+}
+.hero-video {
+  animation: hero-zoom 30s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* ── Reduced motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .wa-pulse, .scroll-hint, .ping-dot, .img-zoom img { animation: none; transition: none; }
+  .hero-video { animation: none; }
+}
